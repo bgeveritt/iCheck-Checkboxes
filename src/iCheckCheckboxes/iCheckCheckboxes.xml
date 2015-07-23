@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="iCheckCheckboxes.widget.CheckboxSelector" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
+    <name>iCheck Checkboxes</name>
+    <description>Creates an iCheck checkbox list in place of a reference set selector</description>
+    <icon>
+        iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAIAAABL1vtsAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEDSURBVDhPY1TpPMpAGWCC0hSAUSMQgL5GZFjInMgx1ZPkgfJhgFgjkkyliu3khLlY7ZUEoUIwgG4EKzNjipmUkjAnlA8G0YYSFY4KQMaOm2+nHXsCEYQDdCPSzKXLHRRWROnoSkAdHKIrVu+qxMjAsPv2u6Itt/7+/w8RhwN0I3bdevf6629BTtZFEdqmsnw+miItHspA/Qfuvc/fdPP3X3T9QIAljygIciwI15bmY//x5x/QX8yMjIfvf8hYd+PX339QFagAS3A+eP8jatmV++++c7AwAfUfe/gxewNO/UCAPUaeffoZuezKlRdfjjwA2n/9+2+c+oFgNLMjwDAxgoEBAEulVfzgL4oXAAAAAElFTkSuQmCC
+    </icon>
+    <properties>
+        <property key="reference" type="entity" isPath="yes" pathType="referenceSet">
+            <caption>Association</caption>
+            <category>Data source</category>
+            <description>The reference entity.</description>
+        </property>
+        <property key="constraint" type="entityConstraint" entityProperty="reference" required="false">
+            <caption>XPath Constraint</caption>
+            <category>Data source</category>
+            <description>The XPath constraint on the objects.
+            Important: The constraint might hide objects that are already in the ReferenceSet.</description> 
+        </property>
+        <property key="sortAttr" type="attribute" entityProperty="reference">
+            <caption>Sort attribute</caption>
+            <category>Data source</category>
+            <description>The attribute to sort on.</description>
+            <attributeTypes>
+                <attributeType name="String"/>
+                <attributeType name="Integer"/>
+                <attributeType name="Currency"/>
+                <attributeType name="Enum"/>
+            </attributeTypes>
+        </property>
+        <property key="sortOrder" type="enumeration" defaultValue="Asc">
+            <caption>Sort order</caption>
+            <category>Data source</category>
+            <description>The sort order.</description>
+            <enumerationValues>
+                <enumerationValue key="Asc">Ascending</enumerationValue>
+                <enumerationValue key="Desc">Descending</enumerationValue>
+            </enumerationValues>  
+        </property>
+        <property key="limit" type="integer" defaultValue="0">
+            <caption>Limit</caption>
+            <category>Data source</category>
+            <description>A limit for the amount of objects shown. 0 equals no limit.</description> 
+        </property>
+        <property key="readOnly" type="boolean" defaultValue="false">
+            <caption>Read only</caption>
+            <category>Appearance</category>
+            <description>Setting to set the widget to read only.</description>
+        </property>
+        <property key="displayAttrs" type="object" isList="true" required="false">
+            <caption>Display attributes</caption>
+            <category>Appearance</category>
+            <description>The object order equals the display order.</description>
+            <properties>
+                <property key="header" type="string">
+                    <caption>Header text</caption>
+                    <category>Data source</category>
+                    <description>The header for the column.</description>
+                </property>
+                <property key="displayAttr" type="attribute" isPath="optional" pathType="reference" entityProperty="../reference">
+                    <caption>Attribute</caption>
+                    <category>Data source</category>
+                    <description>The attribute to display.</description>
+                    <attributeTypes>
+                        <attributeType name="String" />
+                        <attributeType name="Integer" />
+                        <attributeType name="Currency" />
+                        <attributeType name="Enum" />
+                    </attributeTypes>
+                </property>
+                <property key="displayWidth" type="integer" defaultValue="45">
+                    <caption>Width %</caption>
+                    <category>Appearance</category>
+                    <description>The width of the table column</description>
+                </property>
+                <property key="decimalPrecision" type="integer" defaultValue="2">
+                    <caption>Decimal precision</caption>
+                    <category>Currency only</category>
+                    <description>Decimal precision of the attribute, defaults to 2</description>
+                </property>
+                <property key="currency" type="enumeration" defaultValue="None">
+                    <caption>Currency type</caption>
+                    <category>Currency only</category>
+                    <description>The currency type to show.</description>
+                    <enumerationValues>
+                        <enumerationValue key="None">None</enumerationValue>
+                        <enumerationValue key="Euro">Euro</enumerationValue>
+                        <enumerationValue key="Dollar">Dollar</enumerationValue>
+                        <enumerationValue key="Pound">Pound</enumerationValue>
+                        <enumerationValue key="Yen">Yen</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <!--property key="useSeparators" type="boolean" defaultValue="false">
+                    <caption>Group separators</caption>
+                    <category>Currency only</category>
+                    <description>Use group separators.</description>
+                </property-->
+            </properties>
+        </property>
+        <property key="addSelectAll" type="boolean" defaultValue="false">
+            <caption>Select all</caption>
+            <category>Behavior</category>
+            <description>Add a "select all" checkbox to the header row.</description>
+        </property>
+        <property key="onChangeMf" type="microflow" required="false">
+            <caption>On change microflow</caption>
+            <category>Behavior</category>
+            <description>Microflow to trigger on change.</description>
+            <returnType type="Void" />
+        </property>
+		<property key="iCheckStyle" type="enumeration" defaultValue="flat">
+			<caption>Style</caption>
+			<category>iCheck</category>
+			<description>The iCheck style for the radio buttons</description> 
+			<enumerationValues>
+				<enumerationValue key="flat">Flat</enumerationValue>
+				<enumerationValue key="minimal">Minimal</enumerationValue>
+                <enumerationValue key="square">Square</enumerationValue>
+			</enumerationValues>
+		</property>    
+		<property key="iCheckColor" type="enumeration" defaultValue="aero">
+			<caption>Color</caption>
+			<category>iCheck</category>
+			<description>The iCheck color for the radio buttons</description> 
+			<enumerationValues>
+				<enumerationValue key="aero">Aero</enumerationValue>
+                <enumerationValue key="black">Black</enumerationValue>
+				<enumerationValue key="blue">Blue</enumerationValue>
+                <enumerationValue key="green">Green</enumerationValue>
+				<enumerationValue key="grey">Grey</enumerationValue>
+				<enumerationValue key="orange">Orange</enumerationValue>
+                <enumerationValue key="pink">Pink</enumerationValue>
+				<enumerationValue key="purple">Purple</enumerationValue>
+				<enumerationValue key="red">Red</enumerationValue>
+                <enumerationValue key="yellow">Yellow</enumerationValue>                
+			</enumerationValues>
+		</property>         
+    </properties>
+</widget>
+
