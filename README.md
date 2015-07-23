@@ -1,6 +1,10 @@
-# CheckboxSetSelector
+# iCheck (Checkboxes)
 
-This widget lets you use a list of checkboxes for your Reference Set, plain and simple.
+This Mendix widget is based on the iCheck plugin:
+
+ https://github.com/fronteed/iCheck
+
+It is cloned from the [CheckboxSetSelector](https://github.com/mendix/CheckboxSetSelector) widget and provides all the same functionality, along with selecting the iCheck type and color.
 
 ## Description
  
